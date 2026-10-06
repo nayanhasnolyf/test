@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Experience() {
   return (
     <section className="experience" aria-labelledby="experience-heading">
@@ -9,8 +11,17 @@ export function Experience() {
         <div className="experience-role">
           <h3 className="experience-title">Web Development Intern</h3>
           <p className="experience-company">
-            Market Orbit <span aria-hidden="true">&middot;</span> Remote
+            Market Orbit <span aria-hidden="true">&middot;</span> Delhi
           </p>
+          <div className="experience-logo-wrapper">
+            <Image
+              src="/images/market-orbit.jpg"
+              alt="Market Orbit"
+              width={56}
+              height={56}
+              className="experience-logo"
+            />
+          </div>
         </div>
 
         <time className="experience-date" dateTime="2026-05/2026-06">
