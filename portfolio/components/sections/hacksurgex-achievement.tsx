@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { useRef } from "react";
 
-type NccAchievementProps = {
+type HacksurgexAchievementProps = {
   certificateAvailable: boolean;
 };
 
-export function NccAchievement({
+export function HacksurgexAchievement({
   certificateAvailable,
-}: NccAchievementProps) {
+}: HacksurgexAchievementProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   function openDialog() {
@@ -33,50 +33,50 @@ export function NccAchievement({
           className="achievement-dialog-trigger"
           type="button"
           aria-haspopup="dialog"
-          aria-controls="cert-certificate-dialog"
+          aria-controls="hacksurgex-certificate-dialog"
           onClick={openDialog}
         >
           <span className="visually-hidden">
-            View NCC photograph and certificate
+            View Hack SurgeX photograph and certificate
           </span>
         </button>
 
         <div className="achievement-image-frame">
           <Image
-            alt="NCC cadets posing together in uniform"
-            className="achievement-image achievement-image--ncc"
+            alt="Hack SurgeX team receiving their runner-up certificate"
+            className="achievement-image achievement-image--hacksurgex"
             fill
             loading="lazy"
             sizes="(max-width: 600px) calc(100vw - 24px), (max-width: 1100px) 48vw, 24vw"
-            src="/images/achievements/ncc.jpeg"
+            src="/images/achievements/hacksurgex.jpg"
           />
         </div>
 
         <figcaption className="achievement-caption">
-          <h3 className="achievement-title">NCC &apos;C&apos; Certificate</h3>
-          <p className="achievement-metadata">2023 &mdash; 2026</p>
+          <h3 className="achievement-title">Hack SurgeX</h3>
+          <p className="achievement-metadata">Runner-up &middot; Mar 2026</p>
           <p className="achievement-description">
-            Three years of leadership, discipline, team coordination and
-            community service.
+            Secured 2nd place at a national hackathon by building MolGenix
+            within 36 hours.
           </p>
         </figcaption>
       </figure>
 
       <dialog
         className="cert-dialog"
-        id="cert-certificate-dialog"
+        id="hacksurgex-certificate-dialog"
         ref={dialogRef}
-        aria-labelledby="cert-dialog-title"
-        aria-describedby="cert-dialog-description"
+        aria-labelledby="hacksurgex-dialog-title"
+        aria-describedby="hacksurgex-dialog-description"
         onClick={closeFromBackdrop}
       >
         <div className="cert-dialog-panel">
           <div className="cert-dialog-header">
-            <h2 className="cert-dialog-title" id="cert-dialog-title">
-              NCC &apos;C&apos; Certificate
+            <h2 className="hacksurgex-dialog-title" id="hacksurgex-dialog-title">
+              Hack SurgeX
             </h2>
-            <p className="visually-hidden" id="cert-dialog-description">
-              Fullscreen viewer containing an NCC group photograph and certificate.
+            <p className="visually-hidden" id="hacksurgex-dialog-description">
+              Fullscreen viewer containing an Hack SurgeX photograph and certificate.
             </p>
             <button
               className="cert-dialog-close"
@@ -93,27 +93,27 @@ export function NccAchievement({
             <figure className="cert-dialog-media">
               <div className="cert-dialog-photo-frame">
                 <Image
-                  alt="NCC group photograph"
+                  alt="Hack SurgeX photograph"
                   className="cert-dialog-image"
                   fill
                   loading="lazy"
                   sizes="(max-width: 860px) calc(100vw - 32px), 42vw"
-                  src="/images/achievements/ncc.jpeg"
+                  src="/images/achievements/hacksurgex.jpg"
                 />
               </div>
-              <figcaption>NCC photograph</figcaption>
+              <figcaption>Hack SurgeX photograph</figcaption>
             </figure>
 
             <figure className="cert-dialog-media">
               <div className="cert-dialog-certificate-frame">
                 {certificateAvailable ? (
                   <Image
-                    alt="Scanned NCC C Certificate document"
+                    alt="Scanned Hack SurgeX Certificate document"
                     className="cert-dialog-certificate"
                     fill
                     loading="lazy"
                     sizes="(max-width: 860px) calc(100vw - 32px), 50vw"
-                    src="/images/achievements/ncc-certificate.jpg"
+                    src="/images/achievements/hacksurgex-certificate.jpeg"
                   />
                 ) : (
                   <span className="cert-certificate-fallback" role="status">
@@ -121,7 +121,7 @@ export function NccAchievement({
                   </span>
                 )}
               </div>
-              <figcaption>NCC certificate</figcaption>
+              <figcaption>Hack SurgeX certificate</figcaption>
             </figure>
           </div>
         </div>

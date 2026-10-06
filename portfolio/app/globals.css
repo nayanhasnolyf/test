@@ -806,7 +806,7 @@ button {
     letter-spacing: 0;
   }
 
-  .ncc-dialog {
+  .cert-dialog {
     width: 100vw;
     max-width: none;
     height: 100dvh;
@@ -819,27 +819,27 @@ button {
     color: var(--foreground);
   }
 
-  .ncc-dialog::backdrop {
+  .cert-dialog::backdrop {
     background: rgb(0 0 0 / 88%);
   }
 
-  .ncc-dialog[open] {
-    animation: ncc-dialog-fade-in 180ms ease-out;
+  .cert-dialog[open] {
+    animation: cert-dialog-fade-in 180ms ease-out;
   }
 
-  .ncc-dialog[open]::backdrop {
-    animation: ncc-backdrop-fade-in 180ms ease-out;
+  .cert-dialog[open]::backdrop {
+    animation: cert-backdrop-fade-in 180ms ease-out;
   }
 
-  .ncc-dialog-panel {
+  .cert-dialog-panel {
     width: min(100% - 48px, 1400px);
     min-height: 100%;
     margin-inline: auto;
     padding-block: 24px 48px;
-    animation: ncc-dialog-scale-in 180ms ease-out;
+    animation: cert-dialog-scale-in 180ms ease-out;
   }
 
-  .ncc-dialog-header {
+  .cert-dialog-header {
     display: flex;
     min-height: 52px;
     align-items: center;
@@ -848,7 +848,7 @@ button {
     margin-bottom: 24px;
   }
 
-  .ncc-dialog-title {
+  .cert-dialog-title {
     margin: 0;
     font-size: 1rem;
     font-weight: 500;
@@ -857,7 +857,7 @@ button {
     text-transform: uppercase;
   }
 
-  .ncc-dialog-close {
+  .cert-dialog-close {
     display: grid;
     width: 44px;
     height: 44px;
@@ -872,35 +872,35 @@ button {
     transition: border-color 160ms ease;
   }
 
-  .ncc-dialog-close span {
+  .cert-dialog-close span {
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 1;
   }
 
-  .ncc-dialog-close:hover {
+  .cert-dialog-close:hover {
     border-color: var(--foreground);
   }
 
-  .ncc-dialog-close:focus-visible {
+  .cert-dialog-close:focus-visible {
     outline: 1px solid var(--foreground);
     outline-offset: 4px;
   }
 
-  .ncc-dialog-media-grid {
+  .cert-dialog-media-grid {
     display: grid;
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
     gap: 24px;
     align-items: start;
   }
 
-  .ncc-dialog-media {
+  .cert-dialog-media {
     min-width: 0;
     margin: 0;
   }
 
-  .ncc-dialog-photo-frame,
-  .ncc-dialog-certificate-frame {
+  .cert-dialog-photo-frame,
+  .cert-dialog-certificate-frame {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -909,25 +909,25 @@ button {
     background: #111;
   }
 
-  .ncc-dialog-photo-frame {
+  .cert-dialog-photo-frame {
     aspect-ratio: 16 / 10;
   }
 
-  .ncc-dialog-certificate-frame {
+  .cert-dialog-certificate-frame {
     height: calc(100dvh - 140px);
     min-height: 560px;
   }
 
-  .ncc-dialog-image {
+  .cert-dialog-image {
     object-fit: cover;
   }
 
-  .ncc-dialog-certificate {
+  .cert-dialog-certificate {
     z-index: 1;
     object-fit: contain;
   }
 
-  .ncc-certificate-fallback {
+  .cert-certificate-fallback {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -941,7 +941,7 @@ button {
     transform: translate(-50%, -50%);
   }
 
-  .ncc-dialog-media figcaption {
+  .cert-dialog-media figcaption {
     margin-top: 12px;
     color: var(--muted);
     font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
@@ -1351,19 +1351,19 @@ button {
   }
 }
 
-@keyframes ncc-dialog-fade-in {
+@keyframes cert-dialog-fade-in {
   from {
     opacity: 0;
   }
 }
 
-@keyframes ncc-backdrop-fade-in {
+@keyframes cert-backdrop-fade-in {
   from {
     background: transparent;
   }
 }
 
-@keyframes ncc-dialog-scale-in {
+@keyframes cert-dialog-scale-in {
   from {
     opacity: 0;
     transform: scale(0.985);
@@ -1455,16 +1455,16 @@ button {
       padding-bottom: 136px;
     }
 
-    .ncc-dialog-panel {
+    .cert-dialog-panel {
       width: min(100% - 32px, 760px);
     }
 
-    .ncc-dialog-media-grid {
+    .cert-dialog-media-grid {
       grid-template-columns: 1fr;
       gap: 36px;
     }
 
-    .ncc-dialog-certificate-frame {
+    .cert-dialog-certificate-frame {
       height: 82dvh;
       min-height: 520px;
     }
@@ -1703,20 +1703,20 @@ button {
       font-size: 1.375rem;
     }
 
-    .ncc-dialog-panel {
+    .cert-dialog-panel {
       width: calc(100% - 24px);
       padding-block: 12px 32px;
     }
 
-    .ncc-dialog-header {
+    .cert-dialog-header {
       margin-bottom: 16px;
     }
 
-    .ncc-dialog-title {
+    .cert-dialog-title {
       font-size: 0.875rem;
     }
 
-    .ncc-dialog-certificate-frame {
+    .cert-dialog-certificate-frame {
       height: 76dvh;
       min-height: 480px;
     }
@@ -1869,13 +1869,13 @@ button {
     transform: none;
   }
 
-  .ncc-dialog[open],
-  .ncc-dialog[open]::backdrop,
-  .ncc-dialog-panel {
+  .cert-dialog[open],
+  .cert-dialog[open]::backdrop,
+  .cert-dialog-panel {
     animation: none;
   }
 
-  .ncc-dialog-close {
+  .cert-dialog-close {
     transition: none;
   }
 

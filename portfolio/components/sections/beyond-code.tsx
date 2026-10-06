@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { NccAchievement } from "@/components/sections/ncc-achievement";
+import { HacksurgexAchievement } from "@/components/sections/hacksurgex-achievement";
 import { hasPublicAsset } from "@/lib/public-assets";
 
 const experiences = [
@@ -25,7 +26,7 @@ const experiences = [
     metadata: "2023 — 2026",
     description:
       "Three years of leadership, discipline, team coordination and community service.",
-    image: "/images/achievements/ncc.jpg",
+    image: "/images/achievements/ncc.jpeg",
     imageAlt: "NCC cadets posing together in uniform",
     imageClassName: "achievement-image--ncc",
   },
@@ -60,6 +61,13 @@ export function BeyondCode() {
               <NccAchievement
                 certificateAvailable={hasPublicAsset(
                   "/images/achievements/ncc-certificate.jpg",
+                )}
+                key={experience.title}
+              />
+            ) : experience.title === "Hack SurgeX" ? (
+              <HacksurgexAchievement
+                certificateAvailable={hasPublicAsset(
+                  "/images/achievements/hacksurgex-certificate.jpeg",
                 )}
                 key={experience.title}
               />
