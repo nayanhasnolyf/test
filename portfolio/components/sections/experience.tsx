@@ -1,37 +1,44 @@
 import Image from "next/image";
+import { Divider } from "@/components/ui/divider";
 
 export function Experience() {
   return (
     <section className="experience" aria-labelledby="experience-heading">
-      <div className="page-container experience-layout">
-        <h2 className="experience-heading" id="experience-heading">
-          Experience
-        </h2>
+      <div className="page-container">
+        <Divider />
 
-        <div className="experience-role">
-          <h3 className="experience-title">Web Development Intern</h3>
-          <p className="experience-company">
-            Market Orbit <span aria-hidden="true">&middot;</span> Delhi
-          </p>
-          <div className="experience-logo-wrapper">
-            <Image
-              src="/images/market-orbit.jpg"
-              alt="Market Orbit"
-              width={56}
-              height={56}
-              className="experience-logo"
-            />
+        <div className="experience-layout">
+          <h2 className="experience-heading" id="experience-heading">
+            <span className="heading-gradient">Experience</span>
+          </h2>
+
+          <div className="experience-role">
+            <h3 className="experience-title">Web Development Intern</h3>
+            <p className="experience-company">
+              Market Orbit <span aria-hidden="true">&middot;</span> Delhi
+            </p>
+            <div className="experience-logo-wrapper">
+              <Image
+                src="/images/market-orbit.jpg"
+                alt="Market Orbit"
+                width={56}
+                height={56}
+                className="experience-logo"
+              />
+            </div>
           </div>
+
+          <time className="experience-date" dateTime="2026-05/2026-06">
+            May 2026 <span aria-hidden="true">&mdash;</span> Jun 2026
+          </time>
+
+          <p className="experience-description">
+            Worked across the frontend and backend of a production website using
+            Next.js, TypeScript, Express, Prisma and PostgreSQL.
+          </p>
         </div>
 
-        <time className="experience-date" dateTime="2026-05/2026-06">
-          May 2026 <span aria-hidden="true">&mdash;</span> Jun 2026
-        </time>
-
-        <p className="experience-description">
-          Worked across the frontend and backend of a production website using
-          Next.js, TypeScript, Express, Prisma and PostgreSQL.
-        </p>
+        <Divider />
       </div>
     </section>
   );

@@ -5,7 +5,25 @@
   --foreground: #f2f2ee;
   --muted: #a5a5a0;
   --border: #262626;
-  --accent: #9f3a35;
+
+  --accent: #3b82f6;
+  --accent-deep: #1d4ed8;
+  --ink: #0d1117;
+
+  --gradient-brand: linear-gradient(90deg, #3b82f6 0%, #0d1117 100%);
+  --gradient-text: linear-gradient(90deg, #f2f2ee 0%, #3b82f6 100%);
+  --gradient-glow: radial-gradient(
+    ellipse at top left,
+    rgba(59, 130, 246, 0.28),
+    transparent 55%
+  );
+  --gradient-hairline: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.7),
+    rgba(59, 130, 246, 0)
+  );
+  --border-accent: rgba(59, 130, 246, 0.35);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,6 +34,13 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-ink: var(--ink);
+  --color-border-accent: var(--border-accent);
+  --background-image-brand: var(--gradient-brand);
+  --background-image-text-gradient: var(--gradient-text);
+  --background-image-glow: var(--gradient-glow);
+  --background-image-hairline: var(--gradient-hairline);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
@@ -42,8 +67,13 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--foreground) 18%, transparent);
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
   color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 a {
@@ -65,12 +95,13 @@ a {
 }
 
 .skip-link:focus-visible {
-  outline: 2px solid var(--foreground);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   transform: none;
 }
 
-.site-main:focus {
+.site-main:focus,
+.site-main:focus-visible {
   outline: none;
 }
 
@@ -145,8 +176,23 @@ button {
     color: var(--muted);
   }
 
+  .heading-gradient {
+    display: inline-block;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .meta-accent {
+    color: var(--accent);
+  }
+
   .divider {
-    border-top: 1px solid var(--border);
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background: var(--gradient-hairline);
   }
 
   .mono-meta {
@@ -183,16 +229,21 @@ button {
     font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
       Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 0.9em;
-    transition: transform 180ms ease;
+    transition: transform 200ms ease, color 200ms ease;
   }
 
-  .link-arrow:hover::after {
+  .link-arrow:hover::after,
+  .link-arrow:focus-visible::after {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     transform: translateX(0.2rem);
   }
 
   .link-arrow:focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 0.35rem;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .site-header {
@@ -232,8 +283,8 @@ button {
   .nav-link:focus-visible,
   .mobile-menu-trigger:focus-visible,
   .mobile-nav-link:focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 0.35rem;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .desktop-nav {
@@ -245,7 +296,7 @@ button {
   .nav-link,
   .mobile-menu-trigger {
     color: var(--muted);
-    transition: color 160ms ease;
+    transition: color 200ms ease;
   }
 
   .nav-link {
@@ -258,11 +309,11 @@ button {
     bottom: -0.4rem;
     left: 0;
     height: 1px;
-    background: currentColor;
+    background: var(--accent);
     content: "";
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 180ms ease;
+    transition: transform 200ms ease;
   }
 
   .nav-link:hover,
@@ -289,6 +340,16 @@ button {
     min-height: max(720px, 100svh);
     overflow: hidden;
     isolation: isolate;
+  }
+
+  .hero::before {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: var(--gradient-glow);
+    opacity: 0.75;
+    pointer-events: none;
+    content: "";
   }
 
   .hero-reel {
@@ -442,8 +503,8 @@ button {
   }
 
   .hero-scroll-cue:focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 0.4rem;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .hero-scroll-arrow {
@@ -457,8 +518,27 @@ button {
     scroll-margin-top: 24px;
   }
 
+  .selected-work-header {
+    position: relative;
+    isolation: isolate;
+    margin-bottom: 72px;
+  }
+
+  .selected-work-header::before {
+    position: absolute;
+    z-index: -1;
+    top: -32px;
+    left: 0;
+    width: min(520px, 100%);
+    height: 220px;
+    background: var(--gradient-glow);
+    opacity: 0.55;
+    pointer-events: none;
+    content: "";
+  }
+
   .selected-work-heading {
-    margin: 0 0 72px;
+    margin: 0;
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
@@ -467,7 +547,10 @@ button {
   }
 
   .project-list {
-    border-top: 1px solid var(--border);
+    background-image: var(--gradient-hairline);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
   }
 
   .project-row {
@@ -486,6 +569,7 @@ button {
     border: 1px solid var(--border);
     border-radius: 6px;
     background: #111;
+    transition: border-color 220ms ease;
   }
 
   .project-image {
@@ -510,11 +594,30 @@ button {
   }
 
   .project-details {
+    position: relative;
+    isolation: isolate;
     display: flex;
     min-width: 0;
     flex-direction: column;
     align-self: stretch;
-    padding-block: 4px;
+    padding: 20px;
+    border-radius: 6px;
+  }
+
+  .project-details::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-radius: 6px;
+    background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.14),
+      rgba(13, 17, 23, 0)
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+    content: "";
   }
 
   .project-heading-row {
@@ -544,6 +647,7 @@ button {
 
   .project-year {
     margin: 0;
+    color: var(--accent);
     font-size: 0.75rem;
     line-height: 1;
   }
@@ -576,16 +680,27 @@ button {
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0;
+    transition: color 200ms ease;
   }
 
   .project-link-arrow {
     display: inline-block;
-    transition: transform 180ms ease;
+    transition: transform 200ms ease, color 200ms ease;
   }
 
   .project-link:focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 0.4rem;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .project-row:hover .project-image-frame,
+  .project-row:focus-within .project-image-frame {
+    border-color: var(--border-accent);
+  }
+
+  .project-row:hover .project-details::before,
+  .project-row:focus-within .project-details::before {
+    opacity: 1;
   }
 
   .project-row:hover .project-image,
@@ -593,8 +708,20 @@ button {
     transform: scale(1.015);
   }
 
+  .project-link:hover .project-link-label,
+  .project-link:focus-visible .project-link-label {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+  }
+
   .project-link:hover .project-link-arrow,
   .project-link:focus-visible .project-link-arrow {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     transform: translateX(4px);
   }
 
@@ -603,14 +730,27 @@ button {
   }
 
   .experience-layout {
+    position: relative;
+    isolation: isolate;
     display: grid;
     grid-template-columns: minmax(180px, 0.7fr) minmax(360px, 1.35fr) auto;
     column-gap: clamp(40px, 5vw, 88px);
     row-gap: 24px;
     padding-block: 56px 72px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
     align-items: start;
+  }
+
+  .experience-layout::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: min(520px, 100%);
+    height: 220px;
+    background: var(--gradient-glow);
+    opacity: 0.55;
+    pointer-events: none;
+    content: "";
   }
 
   .experience-heading {
@@ -690,11 +830,26 @@ button {
 
   .beyond-code {
     padding-block: 0 176px;
+    scroll-margin-top: 24px;
   }
 
   .beyond-code-header {
+    position: relative;
+    isolation: isolate;
     padding-top: 56px;
-    border-top: 1px solid var(--border);
+  }
+
+  .beyond-code-header::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: min(520px, 100%);
+    height: 220px;
+    background: var(--gradient-glow);
+    opacity: 0.55;
+    pointer-events: none;
+    content: "";
   }
 
   .beyond-code-heading {
@@ -714,8 +869,19 @@ button {
   }
 
   .achievement {
+    position: relative;
+    display: flex;
     min-width: 0;
+    flex-direction: column;
     margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 220ms ease;
+  }
+
+  .achievement:hover,
+  .achievement:focus-within {
+    border-color: var(--border-accent);
   }
 
   .achievement--interactive {
@@ -733,9 +899,9 @@ button {
   }
 
   .achievement-dialog-trigger:focus-visible {
-    border-radius: 4px;
-    outline: 1px solid var(--foreground);
-    outline-offset: 8px;
+    border-radius: 6px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .achievement-image-frame {
@@ -743,7 +909,8 @@ button {
     overflow: hidden;
     width: 100%;
     aspect-ratio: 1;
-    border-radius: 4px;
+    border-bottom: 1px solid var(--border);
+    border-radius: 5px 5px 0 0;
     background: #111;
   }
 
@@ -768,12 +935,39 @@ button {
     object-position: center 42%;
   }
 
-  .achievement:hover .achievement-image {
+  .achievement:hover .achievement-image,
+  .achievement:focus-within .achievement-image {
     transform: scale(1.02);
   }
 
   .achievement-caption {
-    padding-top: 24px;
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    flex: 1;
+    overflow: hidden;
+    padding: 24px;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .achievement-caption::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.14),
+      rgba(13, 17, 23, 0)
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+    content: "";
+  }
+
+  .achievement:hover .achievement-caption::before,
+  .achievement:focus-within .achievement-caption::before {
+    opacity: 1;
   }
 
   .achievement-title {
@@ -815,12 +1009,14 @@ button {
     padding: 0;
     overflow: auto;
     border: 0;
-    background: rgb(9 9 9 / 98%);
+    background: transparent;
     color: var(--foreground);
   }
 
   .cert-dialog::backdrop {
-    background: rgb(0 0 0 / 88%);
+    background: rgba(9, 9, 9, 0.82);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
 
   .cert-dialog[open] {
@@ -833,7 +1029,6 @@ button {
 
   .cert-dialog-panel {
     width: min(100% - 48px, 1400px);
-    min-height: 100%;
     margin-inline: auto;
     padding-block: 24px 48px;
     animation: cert-dialog-scale-in 180ms ease-out;
@@ -879,12 +1074,12 @@ button {
   }
 
   .cert-dialog-close:hover {
-    border-color: var(--foreground);
+    border-color: var(--accent);
   }
 
   .cert-dialog-close:focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 4px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .cert-dialog-media-grid {
@@ -958,11 +1153,37 @@ button {
 
   .github-activity-inner {
     padding-top: 56px;
-    border-top: 1px solid var(--border);
+    background-image: var(--gradient-hairline);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+  }
+
+  .github-activity-header {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .github-activity-header::before {
+    position: absolute;
+    z-index: -1;
+    top: -56px;
+    left: 0;
+    width: min(520px, 100%);
+    height: 220px;
+    background: var(--gradient-glow);
+    opacity: 0.55;
+    pointer-events: none;
+    content: "";
   }
 
   .github-activity-heading {
+    display: inline-block;
     margin: 0;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
@@ -1169,20 +1390,24 @@ button {
   .github-profile-arrow {
     display: inline-block;
     color: var(--foreground);
-    transition: transform 180ms ease;
+    transition: transform 200ms ease, color 200ms ease;
   }
 
   .repository-row:hover .repository-arrow,
   .repository-row:focus-visible .repository-arrow,
   .github-profile-link:hover .github-profile-arrow,
   .github-profile-link:focus-visible .github-profile-arrow {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     transform: translateX(4px);
   }
 
   .repository-row:focus-visible,
   .github-profile-link:focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 4px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .repository-unavailable {
@@ -1212,11 +1437,25 @@ button {
   }
 
   .about-contact-layout {
+    position: relative;
+    isolation: isolate;
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
     gap: clamp(72px, 9vw, 144px);
     padding-top: 56px;
-    border-top: 1px solid var(--border);
+  }
+
+  .about-contact-layout::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: min(520px, 100%);
+    height: 220px;
+    background: var(--gradient-glow);
+    opacity: 0.55;
+    pointer-events: none;
+    content: "";
   }
 
   .about-contact-heading {
@@ -1284,13 +1523,14 @@ button {
 
   .contact-details a:hover {
     text-decoration: underline;
+    text-decoration-color: var(--accent);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.25em;
   }
 
   .contact-details a:focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 4px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .contact-details span {
@@ -1315,21 +1555,26 @@ button {
     font-weight: 450;
     line-height: 1.2;
     letter-spacing: 0;
+    transition: color 200ms ease;
   }
 
   .contact-link-arrow {
     display: inline-block;
-    transition: transform 180ms ease;
+    transition: transform 200ms ease, color 200ms ease;
   }
 
   .contact-link:hover .contact-link-arrow,
   .contact-link:focus-visible .contact-link-arrow {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     transform: translateX(4px);
   }
 
   .contact-link:focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 4px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .site-footer-inner {
@@ -1338,7 +1583,10 @@ button {
     justify-content: space-between;
     gap: 24px;
     padding-block: 28px 32px;
-    border-top: 1px solid var(--border);
+    background-image: var(--gradient-hairline);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
     color: var(--muted);
     font-size: 0.75rem;
     font-weight: 400;
@@ -1360,6 +1608,8 @@ button {
 @keyframes cert-backdrop-fade-in {
   from {
     background: transparent;
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
   }
 }
 
@@ -1600,8 +1850,11 @@ button {
       padding-block: 88px 104px;
     }
 
-    .selected-work-heading {
+    .selected-work-header {
       margin-bottom: 48px;
+    }
+
+    .selected-work-heading {
       font-size: 2.25rem;
     }
 
@@ -1613,6 +1866,10 @@ button {
     .project-image-frame {
       aspect-ratio: 4 / 3;
       border-radius: 4px;
+    }
+
+    .project-details {
+      padding: 16px;
     }
 
     .project-name {
@@ -1849,8 +2106,14 @@ button {
   }
 
   .project-image,
+  .project-image-frame,
+  .project-details::before,
+  .project-link,
   .project-link-arrow,
-  .achievement-image {
+  .achievement,
+  .achievement-image,
+  .achievement-caption::before,
+  .contact-link {
     transition: none;
   }
 
@@ -1861,11 +2124,13 @@ button {
     transform: none;
   }
 
-  .link-arrow:hover::after {
+  .link-arrow:hover::after,
+  .link-arrow:focus-visible::after {
     transform: none;
   }
 
-  .achievement:hover .achievement-image {
+  .achievement:hover .achievement-image,
+  .achievement:focus-within .achievement-image {
     transform: none;
   }
 

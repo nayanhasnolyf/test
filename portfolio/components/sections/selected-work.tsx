@@ -29,9 +29,11 @@ export function SelectedWork() {
   return (
     <section className="selected-work" id="work" aria-labelledby="work-heading">
       <div className="page-container">
-        <h2 className="selected-work-heading" id="work-heading">
-          Selected Work
-        </h2>
+        <div className="selected-work-header">
+          <h2 className="selected-work-heading" id="work-heading">
+            Selected <span className="heading-gradient">Work</span>
+          </h2>
+        </div>
 
         <div className="project-list">
           {projects.map((project) => (
@@ -78,7 +80,7 @@ export function SelectedWork() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span>view project</span>
+                  <span className="project-link-label">view project</span>
                   <span className="project-link-arrow" aria-hidden="true">
                     &#8594;
                   </span>

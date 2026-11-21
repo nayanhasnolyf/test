@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Divider } from "@/components/ui/divider";
 
 const contactLinks = [
   {
@@ -18,35 +19,38 @@ const contactLinks = [
 export function AboutContact() {
   return (
     <section className="about-contact" id="about" aria-label="About and contact">
-      <div className="page-container about-contact-layout">
-        <div className="about-column" aria-labelledby="about-heading">
-          <h2 className="about-contact-heading" id="about-heading">
-            About Me
-          </h2>
+      <div className="page-container">
+        <Divider />
 
-          <p className="about-name">I&apos;m Nayan.</p>
+        <div className="about-contact-layout">
+          <div className="about-column" aria-labelledby="about-heading">
+            <h2 className="about-contact-heading" id="about-heading">
+              About <span className="heading-gradient">Me</span>
+            </h2>
 
-          <div className="about-copy">
-            <p>
-              I study Electronics Engineering with a focus on VLSI, but most of
-              my time outside class ends up in software.
-            </p>
-            <p>
-              I&apos;m especially interested in backend systems, AI,
-              infrastructure and turning ideas into impact.
-            </p>
-            <p className="about-closing">Always learning. Always building.</p>
+            <p className="about-name">I&apos;m Nayan.</p>
+
+            <div className="about-copy">
+              <p>
+                I study Electronics Engineering with a focus on VLSI, but most of
+                my time outside class ends up in software.
+              </p>
+              <p>
+                I&apos;m especially interested in backend systems, AI,
+                infrastructure and turning ideas into impact.
+              </p>
+              <p className="about-closing">Always learning. Always building.</p>
+            </div>
           </div>
-        </div>
 
-        <div
-          className="contact-column"
-          id="contact"
-          aria-labelledby="contact-heading"
-        >
-          <h2 className="about-contact-heading" id="contact-heading">
-            Let&apos;s Connect
-          </h2>
+          <div
+            className="contact-column"
+            id="contact"
+            aria-labelledby="contact-heading"
+          >
+            <h2 className="about-contact-heading" id="contact-heading">
+              Let&apos;s <span className="heading-gradient">Connect</span>
+            </h2>
 
           <address className="contact-details">
             <a href="mailto:nayanpokhriyal25@gmail.com">
@@ -72,6 +76,7 @@ export function AboutContact() {
               </Link>
             ))}
           </nav>
+          </div>
         </div>
       </div>
     </section>

@@ -11,6 +11,7 @@ export function NccAchievement({
   certificateAvailable,
 }: NccAchievementProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   function openDialog() {
     dialogRef.current?.showModal();
@@ -26,10 +27,15 @@ export function NccAchievement({
     }
   }
 
+  function restoreFocus() {
+    triggerRef.current?.focus();
+  }
+
   return (
     <>
       <figure className="achievement achievement--interactive">
         <button
+          ref={triggerRef}
           className="achievement-dialog-trigger"
           type="button"
           aria-haspopup="dialog"
@@ -54,7 +60,9 @@ export function NccAchievement({
 
         <figcaption className="achievement-caption">
           <h3 className="achievement-title">NCC &apos;C&apos; Certificate</h3>
-          <p className="achievement-metadata">2023 &mdash; 2026</p>
+          <p className="achievement-metadata">
+            <span className="meta-accent">2023 &mdash; 2026</span>
+          </p>
           <p className="achievement-description">
             Three years of leadership, discipline, team coordination and
             community service.
@@ -69,6 +77,7 @@ export function NccAchievement({
         aria-labelledby="cert-dialog-title"
         aria-describedby="cert-dialog-description"
         onClick={closeFromBackdrop}
+        onClose={restoreFocus}
       >
         <div className="cert-dialog-panel">
           <div className="cert-dialog-header">

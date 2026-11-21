@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { NccAchievement } from "@/components/sections/ncc-achievement";
 import { HacksurgexAchievement } from "@/components/sections/hacksurgex-achievement";
+import { Divider } from "@/components/ui/divider";
 import { hasPublicAsset } from "@/lib/public-assets";
 
 const experiences = [
   {
     title: "Hack SurgeX",
-    metadata: "Runner-up · Mar 2026",
+    metadataPrefix: "Runner-up · ",
+    metadataAccent: "Mar 2026",
     description:
       "Secured 2nd place at a national hackathon by building MolGenix within 36 hours.",
     image: "/images/achievements/hacksurgex.jpg",
@@ -15,7 +17,10 @@ const experiences = [
   },
   {
     title: "Athernex",
-    metadata: "4th place out of 400+ teams · Apr 2026",
+    metadataPrefix: "",
+    metadataAccent: "4th place",
+    metadataMiddle: " out of 400+ teams · ",
+    metadataEndAccent: "Apr 2026",
     description: "Ranked 4th at a national hackathon across India.",
     image: "/images/achievements/athernex.jpg",
     imageAlt: "Athernex hackathon participants gathered on a sports field",
@@ -23,7 +28,8 @@ const experiences = [
   },
   {
     title: "NCC 'C' Certificate",
-    metadata: "2023 — 2026",
+    metadataPrefix: "",
+    metadataAccent: "2023 — 2026",
     description:
       "Three years of leadership, discipline, team coordination and community service.",
     image: "/images/achievements/ncc.jpeg",
@@ -32,7 +38,8 @@ const experiences = [
   },
   {
     title: "Under 25 Summit",
-    metadata: "Core Team · 2026",
+    metadataPrefix: "Core Team · ",
+    metadataAccent: "2026",
     description:
       "Sales lead and marketing coordinator for a 550+ attendee youth festival.",
     image: "/images/achievements/under25.jpg",
@@ -49,9 +56,11 @@ export function BeyondCode() {
       aria-labelledby="beyond-code-heading"
     >
       <div className="page-container">
+        <Divider />
+
         <div className="beyond-code-header">
           <h2 className="beyond-code-heading" id="beyond-code-heading">
-            Beyond the Code
+            Beyond the <span className="heading-gradient">Code</span>
           </h2>
         </div>
 
@@ -87,7 +96,18 @@ export function BeyondCode() {
                 <figcaption className="achievement-caption">
                   <h3 className="achievement-title">{experience.title}</h3>
                   <p className="achievement-metadata">
-                    {experience.metadata}
+                    {experience.metadataPrefix}
+                    <span className="meta-accent">
+                      {experience.metadataAccent}
+                    </span>
+                    {"metadataMiddle" in experience
+                      ? experience.metadataMiddle
+                      : null}
+                    {"metadataEndAccent" in experience ? (
+                      <span className="meta-accent">
+                        {experience.metadataEndAccent}
+                      </span>
+                    ) : null}
                   </p>
                   <p className="achievement-description">
                     {experience.description}
