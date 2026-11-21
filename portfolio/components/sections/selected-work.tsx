@@ -2,7 +2,43 @@ import Image from "next/image";
 import Link from "next/link";
 import { hasPublicAsset } from "@/lib/public-assets";
 
-const projects = [
+type ProjectLink = {
+  readonly label: string;
+  readonly href: string;
+};
+
+type Project = {
+  readonly name: string;
+  readonly year: string;
+  readonly description: string;
+  readonly stack: readonly string[];
+  readonly image: string;
+  readonly imageAlt: string;
+  readonly href: string;
+  readonly secondaryLink?: ProjectLink;
+};
+
+const projects: readonly Project[] = [
+  {
+    name: "SpotifyCares Support Agent",
+    year: "2026",
+    description:
+      "A retrieval-grounded support agent that drafts replies from vetted historical responses, with a policy engine that forces human escalation for security and payment cases. Evaluated on 150 labelled examples (36% intent accuracy vs 12% majority-class and 16% TF-IDF baselines).",
+    stack: ["Python", "RAG", "Groq", "Gemini", "Streamlit"],
+    image: "/images/projects/spotifycares.png",
+    imageAlt: "SpotifyCares Support Agent interface",
+    href: "https://github.com/nayanhasnolyf/spotifycares-support-agent",
+  },
+  {
+    name: "Indian Shopify Finder",
+    year: "2026",
+    description:
+      "A pipeline that discovers, verifies and extracts contact and brand data for Indian D2C Shopify stores, scaled from 303 to 2,026 verified stores.",
+    stack: ["Python", "Beautiful Soup", "Multithreading"],
+    image: "/images/projects/indian-shopify-finder.png",
+    imageAlt: "Indian Shopify Finder pipeline",
+    href: "https://github.com/nayanhasnolyf/indian-shopify-finder",
+  },
   {
     name: "Spndx",
     year: "2026",
@@ -12,6 +48,10 @@ const projects = [
     image: "/images/projects/spndx.png",
     imageAlt: "Spndx finance dashboard interface",
     href: "https://spndx-financial-dashboard-workspace.vercel.app",
+    secondaryLink: {
+      label: "GitHub",
+      href: "https://github.com/nayanhasnolyf/Spndx---financial-dashboard-workspace",
+    },
   },
   {
     name: "MolGenix",
@@ -52,9 +92,11 @@ export function SelectedWork() {
                   <div
                     className="project-image-fallback"
                     role="img"
-                    aria-label={`${project.imageAlt}. Preview image unavailable.`}
+                    aria-label={`${project.imageAlt}. Preview placeholder.`}
                   >
-                    Preview unavailable
+                    <span className="project-image-fallback-name">
+                      {project.name}
+                    </span>
                   </div>
                 )}
               </div>
@@ -73,18 +115,37 @@ export function SelectedWork() {
                   {project.stack.join(" / ")}
                 </p>
 
-                <Link
-                  className="project-link"
-                  href={project.href}
-                  aria-label={`View ${project.name} project, opens in a new tab`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="project-link-label">view project</span>
-                  <span className="project-link-arrow" aria-hidden="true">
-                    &#8594;
-                  </span>
-                </Link>
+                <div className="project-links">
+                  <Link
+                    className="project-link"
+                    href={project.href}
+                    aria-label={`View ${project.name} project, opens in a new tab`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="project-link-label">view project</span>
+                    <span className="project-link-arrow" aria-hidden="true">
+                      &#8594;
+                    </span>
+                  </Link>
+
+                  {project.secondaryLink ? (
+                    <Link
+                      className="project-link project-link--secondary"
+                      href={project.secondaryLink.href}
+                      aria-label={`View ${project.name} on ${project.secondaryLink.label}, opens in a new tab`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="project-link-label">
+                        {project.secondaryLink.label}
+                      </span>
+                      <span className="project-link-arrow" aria-hidden="true">
+                        &#8594;
+                      </span>
+                    </Link>
+                  ) : null}
+                </div>
               </div>
             </article>
           ))}
