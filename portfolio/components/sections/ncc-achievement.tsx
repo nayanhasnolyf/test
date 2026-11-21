@@ -53,7 +53,7 @@ export function NccAchievement({
             className="achievement-image achievement-image--ncc"
             fill
             loading="lazy"
-            sizes="(max-width: 600px) calc(100vw - 24px), (max-width: 1100px) 48vw, 24vw"
+            sizes="(max-width: 600px) calc(100vw - 24px), (max-width: 1440px) 48vw, 680px"
             src="/images/achievements/ncc.jpeg"
           />
         </div>

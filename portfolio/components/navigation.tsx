@@ -11,6 +11,7 @@ type NavigationLink = {
 
 const navigationLinks: NavigationLink[] = [
   { href: "#work", label: "work" },
+  { href: "#certificates", label: "certificates" },
   { href: "#about", label: "about" },
   { href: "/resume.pdf", label: "resume", external: true },
   { href: "#contact", label: "contact" },

@@ -1,6 +1,8 @@
 import { AboutContact } from "@/components/sections/about-contact";
 import { Footer } from "@/components/footer";
 import { BeyondCode } from "@/components/sections/beyond-code";
+import { Certificates } from "@/components/sections/certificates";
+import { CodingAchievements } from "@/components/sections/coding-achievements";
 import { Experience } from "@/components/sections/experience";
 import { GitHubActivity } from "@/components/sections/github-activity";
 import { Hero } from "@/components/sections/hero";
@@ -13,6 +15,8 @@ export default function Home() {
         <Hero />
         <SelectedWork />
         <Experience />
+        <CodingAchievements />
+        <Certificates />
         <BeyondCode />
         <GitHubActivity />
         <AboutContact />
