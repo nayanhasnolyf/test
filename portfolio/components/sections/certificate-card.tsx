@@ -60,15 +60,15 @@ export function CertificateCard({
           <span className="certificate-date">{date}</span>
         </div>
 
-        <h4 className="certificate-title">{title}</h4>
-
-        {detail ? <p className="certificate-detail">{detail}</p> : null}
-
         {credentialId ? (
           <p className="certificate-credential-id">
             Credential ID: {credentialId}
           </p>
         ) : null}
+
+        <h4 className="certificate-title">{title}</h4>
+
+        {detail ? <p className="certificate-detail">{detail}</p> : null}
 
         {hasViewer || hasCredentialUrl ? (
           <div className="certificate-actions">

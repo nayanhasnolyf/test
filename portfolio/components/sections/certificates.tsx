@@ -4,27 +4,53 @@ import { hasPublicAsset } from "@/lib/public-assets";
 
 const certificates = [
   {
-    title: "AI Engineer Agentic Track: Agents & MCP",
-    issuer: "Udemy",
-    date: "Jan 2026",
-    detail: "17-hour course on building AI agents and Model Context Protocol tooling.",
-    image: "/images/certificates/udemy-agentic-ai.jpg",
+    title: "Introduction to Computer Science (CS50x)",
+    issuer: "Harvard University",
+    date: "Nov 2026",
+    detail: "Python and SQL, with the course's problem sets and final project.",
+    image: "/images/certificates/harvard-cs50x.jpg",
     credentialUrl: "",
   },
   {
     title: "JPMorgan Chase Software Engineering Job Simulation",
     issuer: "Forage",
     date: "Feb 2026",
-    detail: "Spring Boot, Kafka and REST APIs.",
+    detail: "Java, Spring Boot, Kafka and REST APIs.",
+    credentialId: "SyvQuyCXzz6Pbf2Yw",
     image: "/images/certificates/jpmorgan-forage.jpg",
     credentialUrl: "",
   },
   {
-    title: "Docker & Kubernetes Masterclass",
+    title: "AI Engineer Agentic Track: The Complete Agent & MCP Course",
+    issuer: "Udemy",
+    date: "Jan 2026",
+    detail: "17-hour course on building AI agents and Model Context Protocol tooling.",
+    credentialId: "UC-bbbe98e4-1467-44a7-b8c5-5cb5e4e3c43c",
+    image: "/images/certificates/udemy-agentic-ai.jpg",
+    credentialUrl: "",
+  },
+  {
+    title: "Fundamentals of Docker and Kubernetes",
     issuer: "Scaler",
-    date: "Sep 2024",
+    date: "Sep 2025",
     detail: "Containerisation and orchestration fundamentals.",
     image: "/images/certificates/scaler-docker-kubernetes.jpg",
+    credentialUrl: "",
+  },
+  {
+    title: "Intro to SQL",
+    issuer: "Kaggle",
+    date: "Aug 2025",
+    detail: "SQL and Google BigQuery.",
+    image: "/images/certificates/kaggle-intro-sql.jpg",
+    credentialUrl: "",
+  },
+  {
+    title: "Python",
+    issuer: "Kaggle",
+    date: "Aug 2024",
+    detail: "Core Python programming.",
+    image: "/images/certificates/kaggle-python.jpg",
     credentialUrl: "",
   },
 ] as const;
@@ -75,6 +101,11 @@ export function Certificates() {
                 issuer={certificate.issuer}
                 date={certificate.date}
                 detail={certificate.detail}
+                credentialId={
+                  "credentialId" in certificate
+                    ? certificate.credentialId
+                    : undefined
+                }
                 image={certificate.image}
                 imageAvailable={hasPublicAsset(certificate.image)}
                 credentialUrl={certificate.credentialUrl}

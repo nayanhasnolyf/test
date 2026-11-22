@@ -1362,14 +1362,14 @@ button {
   }
 
   .certificate-credential-id {
-    margin: 14px 0 0;
+    margin: 8px 0 0;
     color: var(--muted);
     font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
       Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 0.7rem;
     font-weight: 450;
     line-height: 1.4;
-    text-transform: uppercase;
+    overflow-wrap: anywhere;
   }
 
   .certificate-actions {
