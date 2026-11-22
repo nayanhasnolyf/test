@@ -1,29 +1,13 @@
 import Image from "next/image";
 import { NccAchievement } from "@/components/sections/ncc-achievement";
-import { HacksurgexAchievement } from "@/components/sections/hacksurgex-achievement";
+import { Divider } from "@/components/ui/divider";
 import { hasPublicAsset } from "@/lib/public-assets";
 
 const experiences = [
   {
-    title: "Hack SurgeX",
-    metadata: "Runner-up · Mar 2026",
-    description:
-      "Secured 2nd place at a national hackathon by building MolGenix within 36 hours.",
-    image: "/images/achievements/hacksurgex.jpg",
-    imageAlt: "Hack SurgeX team receiving their runner-up certificate",
-    imageClassName: "achievement-image--hacksurgex",
-  },
-  {
-    title: "Athernex",
-    metadata: "4th place out of 400+ teams · Apr 2026",
-    description: "Ranked 4th at a national hackathon across India.",
-    image: "/images/achievements/athernex.jpg",
-    imageAlt: "Athernex hackathon participants gathered on a sports field",
-    imageClassName: "achievement-image--athernex",
-  },
-  {
     title: "NCC 'C' Certificate",
-    metadata: "2023 — 2026",
+    metadataPrefix: "",
+    metadataAccent: "2023 — 2026",
     description:
       "Three years of leadership, discipline, team coordination and community service.",
     image: "/images/achievements/ncc.jpeg",
@@ -32,7 +16,8 @@ const experiences = [
   },
   {
     title: "Under 25 Summit",
-    metadata: "Core Team · 2026",
+    metadataPrefix: "Core Team · ",
+    metadataAccent: "2024",
     description:
       "Sales lead and marketing coordinator for a 550+ attendee youth festival.",
     image: "/images/achievements/under25.jpg",
@@ -49,25 +34,24 @@ export function BeyondCode() {
       aria-labelledby="beyond-code-heading"
     >
       <div className="page-container">
+        <Divider />
+
         <div className="beyond-code-header">
           <h2 className="beyond-code-heading" id="beyond-code-heading">
-            Beyond the Code
+            Beyond the <span className="heading-gradient">Code</span>
           </h2>
+          <p className="beyond-code-intro">
+            Leadership, discipline and building communities away from the
+            keyboard.
+          </p>
         </div>
 
-        <div className="achievement-grid">
+        <div className="achievement-grid achievement-grid--two-col">
           {experiences.map((experience) =>
             experience.title === "NCC 'C' Certificate" ? (
               <NccAchievement
                 certificateAvailable={hasPublicAsset(
                   "/images/achievements/ncc-certificate.jpg",
-                )}
-                key={experience.title}
-              />
-            ) : experience.title === "Hack SurgeX" ? (
-              <HacksurgexAchievement
-                certificateAvailable={hasPublicAsset(
-                  "/images/achievements/hacksurgex-certificate.jpeg",
                 )}
                 key={experience.title}
               />
@@ -79,7 +63,7 @@ export function BeyondCode() {
                     className={`achievement-image ${experience.imageClassName}`}
                     fill
                     loading="lazy"
-                    sizes="(max-width: 600px) calc(100vw - 24px), (max-width: 1100px) 48vw, 24vw"
+                    sizes="(max-width: 600px) calc(100vw - 24px), (max-width: 1440px) 48vw, 680px"
                     src={experience.image}
                   />
                 </div>
@@ -87,7 +71,10 @@ export function BeyondCode() {
                 <figcaption className="achievement-caption">
                   <h3 className="achievement-title">{experience.title}</h3>
                   <p className="achievement-metadata">
-                    {experience.metadata}
+                    {experience.metadataPrefix}
+                    <span className="meta-accent">
+                      {experience.metadataAccent}
+                    </span>
                   </p>
                   <p className="achievement-description">
                     {experience.description}

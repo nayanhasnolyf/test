@@ -11,6 +11,7 @@ export function HacksurgexAchievement({
   certificateAvailable,
 }: HacksurgexAchievementProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   function openDialog() {
     dialogRef.current?.showModal();
@@ -26,10 +27,15 @@ export function HacksurgexAchievement({
     }
   }
 
+  function restoreFocus() {
+    triggerRef.current?.focus();
+  }
+
   return (
     <>
       <figure className="achievement achievement--interactive">
         <button
+          ref={triggerRef}
           className="achievement-dialog-trigger"
           type="button"
           aria-haspopup="dialog"
@@ -47,14 +53,16 @@ export function HacksurgexAchievement({
             className="achievement-image achievement-image--hacksurgex"
             fill
             loading="lazy"
-            sizes="(max-width: 600px) calc(100vw - 24px), (max-width: 1100px) 48vw, 24vw"
+            sizes="(max-width: 600px) calc(100vw - 24px), (max-width: 1440px) 48vw, 680px"
             src="/images/achievements/hacksurgex.jpg"
           />
         </div>
 
         <figcaption className="achievement-caption">
           <h3 className="achievement-title">Hack SurgeX</h3>
-          <p className="achievement-metadata">Runner-up &middot; Mar 2026</p>
+          <p className="achievement-metadata">
+            Runner-up &middot; <span className="meta-accent">Mar 2026</span>
+          </p>
           <p className="achievement-description">
             Secured 2nd place at a national hackathon by building MolGenix
             within 36 hours.
@@ -69,10 +77,11 @@ export function HacksurgexAchievement({
         aria-labelledby="hacksurgex-dialog-title"
         aria-describedby="hacksurgex-dialog-description"
         onClick={closeFromBackdrop}
+        onClose={restoreFocus}
       >
         <div className="cert-dialog-panel">
           <div className="cert-dialog-header">
-            <h2 className="hacksurgex-dialog-title" id="hacksurgex-dialog-title">
+            <h2 className="cert-dialog-title" id="hacksurgex-dialog-title">
               Hack SurgeX
             </h2>
             <p className="visually-hidden" id="hacksurgex-dialog-description">
