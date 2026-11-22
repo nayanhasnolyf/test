@@ -2,16 +2,19 @@
 
 :root {
   --background: #090909;
+  --surface-1: #0e1014;
+  --surface-2: #14171d;
   --foreground: #f2f2ee;
   --muted: #a5a5a0;
   --border: #262626;
+  --border-subtle: rgba(255, 255, 255, 0.06);
 
   --accent: #3b82f6;
   --accent-deep: #1d4ed8;
   --ink: #0d1117;
 
   --gradient-brand: linear-gradient(90deg, #3b82f6 0%, #0d1117 100%);
-  --gradient-text: linear-gradient(90deg, #f2f2ee 30%, #3b82f6 100%);
+  --gradient-text: linear-gradient(90deg, #f2f2ee 42%, #3b82f6 100%);
   --gradient-glow: radial-gradient(
     ellipse at top left,
     rgba(59, 130, 246, 0.14),
@@ -19,9 +22,9 @@
   );
   --gradient-hairline: linear-gradient(
     90deg,
-    rgba(59, 130, 246, 0.36) 0%,
-    rgba(59, 130, 246, 0.1) 24%,
-    rgba(38, 38, 38, 0.9) 52%,
+    rgba(59, 130, 246, 0.32) 0%,
+    rgba(59, 130, 246, 0.08) 20%,
+    rgba(38, 38, 38, 0.9) 45%,
     rgba(38, 38, 38, 0.35) 100%
   );
   --border-accent: rgba(59, 130, 246, 0.28);
@@ -32,6 +35,8 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-border: var(--border);
@@ -204,7 +209,7 @@ button {
     font-size: 0.75rem;
     font-weight: 450;
     line-height: 1.4;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -349,7 +354,7 @@ button {
     z-index: 1;
     inset: 0;
     background: var(--gradient-glow);
-    opacity: 0.45;
+    opacity: 0.32;
     pointer-events: none;
     content: "";
   }
@@ -452,7 +457,7 @@ button {
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -462,7 +467,7 @@ button {
     font-size: 5.5rem;
     font-weight: 500;
     line-height: 0.98;
-    letter-spacing: 0;
+    letter-spacing: -0.035em;
   }
 
   .hero-headline span {
@@ -494,7 +499,7 @@ button {
     font-size: 0.7rem;
     font-weight: 450;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     transform: translateX(-50%);
     transition: color 160ms ease;
@@ -521,25 +526,7 @@ button {
   }
 
   .selected-work-header {
-    position: relative;
-    isolation: isolate;
     margin-bottom: 72px;
-  }
-
-  .selected-work-header::before {
-    position: absolute;
-    z-index: -1;
-    top: -48px;
-    left: 0;
-    width: min(440px, 100%);
-    height: 180px;
-    background: radial-gradient(
-      ellipse 65% 65% at 22% 45%,
-      rgba(59, 130, 246, 0.1),
-      transparent 72%
-    );
-    pointer-events: none;
-    content: "";
   }
 
   .selected-work-heading {
@@ -547,7 +534,7 @@ button {
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: -0.025em;
     text-transform: uppercase;
   }
 
@@ -570,8 +557,9 @@ button {
     aspect-ratio: 16 / 10;
     border: 1px solid var(--border);
     border-radius: 6px;
-    background: #111;
-    transition: border-color 220ms ease;
+    background: var(--surface-1);
+    box-shadow: inset 0 1px 0 var(--border-subtle);
+    transition: border-color 220ms ease, box-shadow 220ms ease;
   }
 
   .project-image {
@@ -589,12 +577,11 @@ button {
     padding: clamp(20px, 4vw, 48px);
     background:
       radial-gradient(
-        ellipse 75% 75% at 0% 0%,
-        rgba(59, 130, 246, 0.2),
-        rgba(29, 78, 216, 0.06) 42%,
-        transparent 72%
+        ellipse 65% 65% at 0% 0%,
+        rgba(59, 130, 246, 0.12),
+        transparent 68%
       ),
-      var(--ink);
+      var(--surface-1);
     text-align: center;
   }
 
@@ -605,12 +592,12 @@ button {
     background-image:
       linear-gradient(
         to right,
-        rgba(242, 242, 238, 0.045) 1px,
+        rgba(242, 242, 238, 0.035) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        rgba(242, 242, 238, 0.045) 1px,
+        rgba(242, 242, 238, 0.035) 1px,
         transparent 1px
       );
     background-size: 32px 32px, 32px 32px;
@@ -624,9 +611,9 @@ button {
     top: 0;
     right: 0;
     left: 0;
-    height: 2px;
+    height: 1px;
     background: var(--gradient-brand);
-    opacity: 0.75;
+    opacity: 0.6;
     pointer-events: none;
     content: "";
   }
@@ -647,30 +634,11 @@ button {
   }
 
   .project-details {
-    position: relative;
-    isolation: isolate;
     display: flex;
     min-width: 0;
     flex-direction: column;
     align-self: stretch;
-    padding: 20px;
-    border-radius: 6px;
-  }
-
-  .project-details::before {
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    border-radius: 6px;
-    background: linear-gradient(
-      135deg,
-      rgba(59, 130, 246, 0.07),
-      rgba(13, 17, 23, 0)
-    );
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 220ms ease;
-    content: "";
+    padding-block: 4px;
   }
 
   .project-heading-row {
@@ -686,7 +654,7 @@ button {
     font-size: clamp(1.85rem, 2.8vw, 3rem);
     font-weight: 500;
     line-height: 1.02;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
     overflow-wrap: break-word;
   }
 
@@ -696,7 +664,7 @@ button {
     font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
       Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-weight: 450;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -767,11 +735,7 @@ button {
   .project-row:hover .project-image-frame,
   .project-row:focus-within .project-image-frame {
     border-color: var(--border-accent);
-  }
-
-  .project-row:hover .project-details::before,
-  .project-row:focus-within .project-details::before {
-    opacity: 1;
+    box-shadow: inset 0 1px 0 rgba(59, 130, 246, 0.22);
   }
 
   .project-row:hover .project-image,
@@ -849,7 +813,7 @@ button {
     font-size: 2rem;
     font-weight: 500;
     line-height: 1.05;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
   }
 
   .experience-company {
@@ -869,7 +833,7 @@ button {
     font-size: 0.75rem;
     font-weight: 450;
     line-height: 1.4;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     white-space: nowrap;
   }
@@ -902,7 +866,7 @@ button {
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: -0.025em;
     text-transform: uppercase;
   }
 
@@ -935,12 +899,17 @@ button {
     margin: 0;
     border: 1px solid var(--border);
     border-radius: 6px;
-    transition: border-color 220ms ease;
+    background: var(--surface-1);
+    box-shadow: inset 0 1px 0 var(--border-subtle);
+    transition: border-color 220ms ease, background-color 220ms ease,
+      box-shadow 220ms ease;
   }
 
   .achievement:hover,
   .achievement:focus-within {
     border-color: var(--border-accent);
+    background: var(--surface-2);
+    box-shadow: inset 0 1px 0 rgba(59, 130, 246, 0.22);
   }
 
   .achievement--interactive {
@@ -970,7 +939,7 @@ button {
     aspect-ratio: 16 / 10;
     border-bottom: 1px solid var(--border);
     border-radius: 5px 5px 0 0;
-    background: #111;
+    background: var(--surface-1);
   }
 
   .achievement-image {
@@ -1002,31 +971,10 @@ button {
   .achievement-caption {
     position: relative;
     z-index: 1;
-    isolation: isolate;
     flex: 1;
     overflow: hidden;
     padding: 24px;
     border-radius: 0 0 5px 5px;
-  }
-
-  .achievement-caption::before {
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(59, 130, 246, 0.07),
-      rgba(13, 17, 23, 0)
-    );
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 220ms ease;
-    content: "";
-  }
-
-  .achievement:hover .achievement-caption::before,
-  .achievement:focus-within .achievement-caption::before {
-    opacity: 1;
   }
 
   .achievement-title {
@@ -1034,7 +982,7 @@ button {
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.1;
-    letter-spacing: 0;
+    letter-spacing: -0.015em;
   }
 
   .achievement-metadata {
@@ -1046,7 +994,7 @@ button {
     font-size: 0.7rem;
     font-weight: 450;
     line-height: 1.4;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -1107,7 +1055,7 @@ button {
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.2;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -1160,7 +1108,8 @@ button {
     width: 100%;
     border: 1px solid var(--border);
     border-radius: 4px;
-    background: #111;
+    background: var(--surface-1);
+    box-shadow: inset 0 1px 0 var(--border-subtle);
   }
 
   .cert-dialog-photo-frame {
@@ -1202,7 +1151,7 @@ button {
       Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 0.7rem;
     line-height: 1.4;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -1225,7 +1174,7 @@ button {
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: -0.025em;
     text-transform: uppercase;
   }
 
@@ -1245,7 +1194,7 @@ button {
     font-size: 0.75rem;
     font-weight: 450;
     line-height: 1.4;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -1257,7 +1206,6 @@ button {
 
   .certificate-card {
     position: relative;
-    isolation: isolate;
     display: flex;
     min-width: 0;
     flex-direction: column;
@@ -1265,32 +1213,17 @@ button {
     padding: 28px;
     border: 1px solid var(--border);
     border-radius: 6px;
-    transition: border-color 220ms ease;
-  }
-
-  .certificate-card::before {
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(59, 130, 246, 0.07),
-      rgba(13, 17, 23, 0)
-    );
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 220ms ease;
-    content: "";
+    background: var(--surface-1);
+    box-shadow: inset 0 1px 0 var(--border-subtle);
+    transition: border-color 220ms ease, background-color 220ms ease,
+      box-shadow 220ms ease;
   }
 
   .certificate-card:hover,
   .certificate-card:focus-within {
     border-color: var(--border-accent);
-  }
-
-  .certificate-card:hover::before,
-  .certificate-card:focus-within::before {
-    opacity: 1;
+    background: var(--surface-2);
+    box-shadow: inset 0 1px 0 rgba(59, 130, 246, 0.22);
   }
 
   .certificate-card-meta {
@@ -1304,7 +1237,7 @@ button {
     font-size: 0.7rem;
     font-weight: 450;
     line-height: 1.4;
-    letter-spacing: 0;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -1321,7 +1254,7 @@ button {
     font-size: 1.375rem;
     font-weight: 500;
     line-height: 1.25;
-    letter-spacing: 0;
+    letter-spacing: -0.015em;
   }
 
   .certificate-detail {
@@ -1418,7 +1351,7 @@ button {
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: -0.025em;
     text-transform: uppercase;
   }
 
@@ -1593,6 +1526,12 @@ button {
     align-items: center;
     min-height: 64px;
     border-bottom: 1px solid var(--border);
+    transition: border-color 200ms ease;
+  }
+
+  .repository-row:hover,
+  .repository-row:focus-visible {
+    border-bottom-color: var(--border-accent);
   }
 
   .repository-name {
@@ -1688,7 +1627,7 @@ button {
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: -0.025em;
   }
 
   .about-copy {
@@ -1771,7 +1710,12 @@ button {
     font-weight: 450;
     line-height: 1.2;
     letter-spacing: 0;
-    transition: color 200ms ease;
+    transition: color 200ms ease, border-color 200ms ease;
+  }
+
+  .contact-link:hover,
+  .contact-link:focus-visible {
+    border-bottom-color: var(--border-accent);
   }
 
   .contact-link-arrow {
@@ -2083,10 +2027,6 @@ button {
       border-radius: 4px;
     }
 
-    .project-details {
-      padding: 16px;
-    }
-
     .project-name {
       font-size: clamp(1.75rem, 6vw, 2.25rem);
     }
@@ -2346,17 +2286,15 @@ button {
 
   .project-image,
   .project-image-frame,
-  .project-details::before,
   .project-link,
   .project-link-arrow,
   .achievement,
   .achievement-image,
-  .achievement-caption::before,
   .certificate-card,
-  .certificate-card::before,
   .certificate-viewer-trigger,
   .certificate-link,
   .certificate-link-arrow,
+  .repository-row,
   .contact-link {
     transition: none;
   }
