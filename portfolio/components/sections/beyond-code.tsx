@@ -17,7 +17,7 @@ const experiences = [
   {
     title: "Under 25 Summit",
     metadataPrefix: "Core Team · ",
-    metadataAccent: "2026",
+    metadataAccent: "2024",
     description:
       "Sales lead and marketing coordinator for a 550+ attendee youth festival.",
     image: "/images/achievements/under25.jpg",
