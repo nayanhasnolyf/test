@@ -26,8 +26,10 @@ const projects: readonly Project[] = [
     description:
       "A retrieval-grounded support agent that drafts replies from vetted historical responses, with a policy engine that forces human escalation for security and payment cases. Evaluated on 150 labelled examples (36% intent accuracy vs 12% majority-class and 16% TF-IDF baselines).",
     stack: ["Python", "RAG", "Groq", "Gemini", "Streamlit"],
-    image: "/images/projects/spotifycares.png",
-    imageAlt: "SpotifyCares Support Agent interface",
+    image: "/images/projects/spotifycares.jpg",
+    imageAlt:
+      "SpotifyCares Support Agent intent classification accuracy benchmark graphic",
+    imageClassName: "project-image--contain-dark",
     href: "https://github.com/nayanhasnolyf/spotifycares-support-agent",
   },
   {

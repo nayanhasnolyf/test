@@ -574,6 +574,12 @@ button {
     object-position: center;
   }
 
+  .project-image--contain-dark {
+    background: #131416;
+    object-fit: contain;
+    object-position: center;
+  }
+
   .project-image-fallback {
     position: absolute;
     inset: 0;
