@@ -568,6 +568,12 @@ button {
     transition: transform 240ms ease;
   }
 
+  .project-image--contain {
+    background: #252b39;
+    object-fit: contain;
+    object-position: center;
+  }
+
   .project-image-fallback {
     position: absolute;
     inset: 0;

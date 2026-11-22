@@ -14,6 +14,7 @@ type Project = {
   readonly stack: readonly string[];
   readonly image: string;
   readonly imageAlt: string;
+  readonly imageClassName?: string;
   readonly href: string;
   readonly secondaryLink?: ProjectLink;
 };
@@ -35,8 +36,10 @@ const projects: readonly Project[] = [
     description:
       "A pipeline that discovers, verifies and extracts contact and brand data for Indian D2C Shopify stores, scaled from 303 to 2,026 verified stores.",
     stack: ["Python", "Beautiful Soup", "Multithreading"],
-    image: "/images/projects/indian-shopify-finder.png",
-    imageAlt: "Indian Shopify Finder pipeline",
+    image: "/images/projects/indian-shopify-finder.jpg",
+    imageAlt:
+      "Indian Shopify Finder sourcing, verification, extraction and deduplication pipeline diagram",
+    imageClassName: "project-image--contain",
     href: "https://github.com/nayanhasnolyf/indian-shopify-finder",
   },
   {
@@ -82,7 +85,11 @@ export function SelectedWork() {
                 {hasPublicAsset(project.image) ? (
                   <Image
                     alt={project.imageAlt}
-                    className="project-image"
+                    className={
+                      project.imageClassName
+                        ? `project-image ${project.imageClassName}`
+                        : "project-image"
+                    }
                     fill
                     loading="lazy"
                     sizes="(max-width: 720px) calc(100vw - 24px), (max-width: 959px) calc(100vw - 32px), (max-width: 1440px) 64vw, 920px"
