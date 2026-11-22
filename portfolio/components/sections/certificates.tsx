@@ -9,7 +9,8 @@ const certificates = [
     date: "Nov 2026",
     detail: "Python and SQL, with the course's problem sets and final project.",
     image: "/images/certificates/harvard-cs50x.jpg",
-    credentialUrl: "",
+    credentialUrl:
+      "https://cs50.harvard.edu/certificates/7bc45c97-679b-423f-9342-3b480faf8a4b",
   },
   {
     title: "JPMorgan Chase Software Engineering Job Simulation",
@@ -18,7 +19,8 @@ const certificates = [
     detail: "Java, Spring Boot, Kafka and REST APIs.",
     credentialId: "SyvQuyCXzz6Pbf2Yw",
     image: "/images/certificates/jpmorgan-forage.jpg",
-    credentialUrl: "",
+    credentialUrl:
+      "https://www.theforage.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_697306b8b1ee4126d08ef6b2_1770194774376_completion_certificate.pdf",
   },
   {
     title: "AI Engineer Agentic Track: The Complete Agent & MCP Course",
@@ -27,7 +29,8 @@ const certificates = [
     detail: "17-hour course on building AI agents and Model Context Protocol tooling.",
     credentialId: "UC-bbbe98e4-1467-44a7-b8c5-5cb5e4e3c43c",
     image: "/images/certificates/udemy-agentic-ai.jpg",
-    credentialUrl: "",
+    credentialUrl:
+      "https://www.udemy.com/certificate/UC-bbbe98e4-1467-44a7-b8c5-5cb5e4e3c43c/",
   },
   {
     title: "Fundamentals of Docker and Kubernetes",
@@ -35,7 +38,7 @@ const certificates = [
     date: "Sep 2025",
     detail: "Containerisation and orchestration fundamentals.",
     image: "/images/certificates/scaler-docker-kubernetes.jpg",
-    credentialUrl: "",
+    credentialUrl: "https://moonshot.scaler.com/s/sl/llZ-F3cwTs",
   },
   {
     title: "Intro to SQL",
@@ -43,7 +46,8 @@ const certificates = [
     date: "Aug 2025",
     detail: "SQL and Google BigQuery.",
     image: "/images/certificates/kaggle-intro-sql.jpg",
-    credentialUrl: "",
+    credentialUrl:
+      "https://www.kaggle.com/learn/certification/nayanpokhriyal/intro-to-sql",
   },
   {
     title: "Python",
@@ -51,7 +55,8 @@ const certificates = [
     date: "Aug 2024",
     detail: "Core Python programming.",
     image: "/images/certificates/kaggle-python.jpg",
-    credentialUrl: "",
+    credentialUrl:
+      "https://www.kaggle.com/learn/certification/nayanpokhriyal/python",
   },
 ] as const;
 
