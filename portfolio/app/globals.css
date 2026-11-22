@@ -11,18 +11,20 @@
   --ink: #0d1117;
 
   --gradient-brand: linear-gradient(90deg, #3b82f6 0%, #0d1117 100%);
-  --gradient-text: linear-gradient(90deg, #f2f2ee 0%, #3b82f6 100%);
+  --gradient-text: linear-gradient(90deg, #f2f2ee 30%, #3b82f6 100%);
   --gradient-glow: radial-gradient(
     ellipse at top left,
-    rgba(59, 130, 246, 0.28),
-    transparent 55%
+    rgba(59, 130, 246, 0.14),
+    transparent 60%
   );
   --gradient-hairline: linear-gradient(
     90deg,
-    rgba(59, 130, 246, 0.7),
-    rgba(59, 130, 246, 0)
+    rgba(59, 130, 246, 0.36) 0%,
+    rgba(59, 130, 246, 0.1) 24%,
+    rgba(38, 38, 38, 0.9) 52%,
+    rgba(38, 38, 38, 0.35) 100%
   );
-  --border-accent: rgba(59, 130, 246, 0.35);
+  --border-accent: rgba(59, 130, 246, 0.28);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -347,7 +349,7 @@ button {
     z-index: 1;
     inset: 0;
     background: var(--gradient-glow);
-    opacity: 0.75;
+    opacity: 0.45;
     pointer-events: none;
     content: "";
   }
@@ -527,12 +529,15 @@ button {
   .selected-work-header::before {
     position: absolute;
     z-index: -1;
-    top: -32px;
+    top: -48px;
     left: 0;
-    width: min(520px, 100%);
-    height: 220px;
-    background: var(--gradient-glow);
-    opacity: 0.55;
+    width: min(440px, 100%);
+    height: 180px;
+    background: radial-gradient(
+      ellipse 65% 65% at 22% 45%,
+      rgba(59, 130, 246, 0.1),
+      transparent 72%
+    );
     pointer-events: none;
     content: "";
   }
@@ -547,10 +552,7 @@ button {
   }
 
   .project-list {
-    background-image: var(--gradient-hairline);
-    background-position: top left;
-    background-repeat: no-repeat;
-    background-size: 100% 1px;
+    border-top: 1px solid var(--border);
   }
 
   .project-row {
@@ -585,7 +587,14 @@ button {
     display: grid;
     place-items: center;
     padding: clamp(20px, 4vw, 48px);
-    background: var(--gradient-brand);
+    background:
+      radial-gradient(
+        ellipse 75% 75% at 0% 0%,
+        rgba(59, 130, 246, 0.2),
+        rgba(29, 78, 216, 0.06) 42%,
+        transparent 72%
+      ),
+      var(--ink);
     text-align: center;
   }
 
@@ -595,21 +604,29 @@ button {
     inset: 0;
     background-image:
       linear-gradient(
-        180deg,
-        rgba(9, 9, 9, 0.24) 0%,
-        rgba(9, 9, 9, 0.52) 100%
-      ),
-      linear-gradient(
         to right,
-        rgba(242, 242, 238, 0.08) 1px,
+        rgba(242, 242, 238, 0.045) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        rgba(242, 242, 238, 0.08) 1px,
+        rgba(242, 242, 238, 0.045) 1px,
         transparent 1px
       );
-    background-size: 100% 100%, 32px 32px, 32px 32px;
+    background-size: 32px 32px, 32px 32px;
+    pointer-events: none;
+    content: "";
+  }
+
+  .project-image-fallback::after {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: var(--gradient-brand);
+    opacity: 0.75;
     pointer-events: none;
     content: "";
   }
@@ -647,7 +664,7 @@ button {
     border-radius: 6px;
     background: linear-gradient(
       135deg,
-      rgba(59, 130, 246, 0.14),
+      rgba(59, 130, 246, 0.07),
       rgba(13, 17, 23, 0)
     );
     opacity: 0;
@@ -784,27 +801,13 @@ button {
   }
 
   .experience-layout {
-    position: relative;
-    isolation: isolate;
     display: grid;
     grid-template-columns: minmax(180px, 0.7fr) minmax(360px, 1.35fr) auto;
     column-gap: clamp(40px, 5vw, 88px);
     row-gap: 24px;
     padding-block: 56px 72px;
+    border-bottom: 1px solid var(--border);
     align-items: start;
-  }
-
-  .experience-layout::before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: min(520px, 100%);
-    height: 220px;
-    background: var(--gradient-glow);
-    opacity: 0.55;
-    pointer-events: none;
-    content: "";
   }
 
   .experience-heading {
@@ -890,23 +893,7 @@ button {
 
   .coding-achievements-header,
   .beyond-code-header {
-    position: relative;
-    isolation: isolate;
     padding-top: 56px;
-  }
-
-  .coding-achievements-header::before,
-  .beyond-code-header::before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: min(520px, 100%);
-    height: 220px;
-    background: var(--gradient-glow);
-    opacity: 0.55;
-    pointer-events: none;
-    content: "";
   }
 
   .coding-achievements-heading,
@@ -1028,7 +1015,7 @@ button {
     inset: 0;
     background: linear-gradient(
       135deg,
-      rgba(59, 130, 246, 0.14),
+      rgba(59, 130, 246, 0.07),
       rgba(13, 17, 23, 0)
     );
     opacity: 0;
@@ -1230,22 +1217,7 @@ button {
   }
 
   .certificates-header {
-    position: relative;
-    isolation: isolate;
     padding-top: 56px;
-  }
-
-  .certificates-header::before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: min(520px, 100%);
-    height: 220px;
-    background: var(--gradient-glow);
-    opacity: 0.55;
-    pointer-events: none;
-    content: "";
   }
 
   .certificates-heading {
@@ -1302,7 +1274,7 @@ button {
     inset: 0;
     background: linear-gradient(
       135deg,
-      rgba(59, 130, 246, 0.14),
+      rgba(59, 130, 246, 0.07),
       rgba(13, 17, 23, 0)
     );
     opacity: 0;
@@ -1441,31 +1413,8 @@ button {
     background-size: 100% 1px;
   }
 
-  .github-activity-header {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .github-activity-header::before {
-    position: absolute;
-    z-index: -1;
-    top: -56px;
-    left: 0;
-    width: min(520px, 100%);
-    height: 220px;
-    background: var(--gradient-glow);
-    opacity: 0.55;
-    pointer-events: none;
-    content: "";
-  }
-
   .github-activity-heading {
-    display: inline-block;
     margin: 0;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
@@ -1719,25 +1668,10 @@ button {
   }
 
   .about-contact-layout {
-    position: relative;
-    isolation: isolate;
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
     gap: clamp(72px, 9vw, 144px);
     padding-top: 56px;
-  }
-
-  .about-contact-layout::before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: min(520px, 100%);
-    height: 220px;
-    background: var(--gradient-glow);
-    opacity: 0.55;
-    pointer-events: none;
-    content: "";
   }
 
   .about-contact-heading {
@@ -1865,10 +1799,7 @@ button {
     justify-content: space-between;
     gap: 24px;
     padding-block: 28px 32px;
-    background-image: var(--gradient-hairline);
-    background-position: top left;
-    background-repeat: no-repeat;
-    background-size: 100% 1px;
+    border-top: 1px solid var(--border);
     color: var(--muted);
     font-size: 0.75rem;
     font-weight: 400;

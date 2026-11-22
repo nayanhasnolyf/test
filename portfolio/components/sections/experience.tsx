@@ -9,7 +9,7 @@ export function Experience() {
 
         <div className="experience-layout">
           <h2 className="experience-heading" id="experience-heading">
-            <span className="heading-gradient">Experience</span>
+            Experience
           </h2>
 
           <div className="experience-role">
@@ -37,8 +37,6 @@ export function Experience() {
             Next.js, TypeScript, Express, Prisma and PostgreSQL.
           </p>
         </div>
-
-        <Divider />
       </div>
     </section>
   );

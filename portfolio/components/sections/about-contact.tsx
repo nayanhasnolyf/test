@@ -25,7 +25,7 @@ export function AboutContact() {
         <div className="about-contact-layout">
           <div className="about-column" aria-labelledby="about-heading">
             <h2 className="about-contact-heading" id="about-heading">
-              About <span className="heading-gradient">Me</span>
+              About Me
             </h2>
 
             <p className="about-name">I&apos;m Nayan.</p>
@@ -49,7 +49,7 @@ export function AboutContact() {
             aria-labelledby="contact-heading"
           >
             <h2 className="about-contact-heading" id="contact-heading">
-              Let&apos;s <span className="heading-gradient">Connect</span>
+              Let&apos;s Connect
             </h2>
 
           <address className="contact-details">
